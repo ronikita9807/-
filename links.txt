@@ -1,0 +1,1 @@
+https://coderlessons.com/articles/programmirovanie/kak-ispolzovat-python-dlia-nakhozhdeniia-zipf-raspredeleniia-tekstovogo-faila
