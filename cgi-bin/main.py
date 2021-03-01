@@ -2,7 +2,8 @@ import sys
 from nltk.tokenize import RegexpTokenizer
 from nltk.probability import FreqDist
 
-#nltk.download('all')
+
+# nltk.download('all')
 
 def print_tokens(tokens):
     for token in tokens:
@@ -10,6 +11,7 @@ def print_tokens(tokens):
         print()
 
     return
+
 
 def dict_to_list(dict):
     lst = []
@@ -19,6 +21,7 @@ def dict_to_list(dict):
 
     return lst
 
+
 def print_results(ratio):
     print("Word | ratio | standard")
     for elem in ratio:
@@ -26,18 +29,17 @@ def print_results(ratio):
 
     return
 
+
 def score(ratio, eps):
     result = 0
     for elem in ratio:
-        if abs(elem[1]-elem[2]) < eps:
+        if abs(elem[1] - elem[2]) < eps:
             result += 1
 
-    return result/len(ratio)
+    return result / len(ratio)
 
-def text_naturalness(sample_len, eps):
-    test_file = open("test.txt", "r")
-    text = test_file.read()
 
+def text_naturalness(text, sample_len, eps):
     tokenizer = RegexpTokenizer(r'\w+')
 
     tokens = tokenizer.tokenize(text)
@@ -54,9 +56,10 @@ def text_naturalness(sample_len, eps):
     for i in range(0, len(samples)):
         ratio.append([samples[i][0], round(samples[i][1] / pivot, 3), round(1 / (i + 1), 3)])
 
-    print_results(ratio)
+    # print_results(ratio)
 
     return score(ratio, eps)
+
 
 def main(argv):
     if len(argv) == 1:
@@ -68,8 +71,10 @@ def main(argv):
         sample_len = argv[1]
         eps = argv[2]
 
-    #print(text_naturalness(sample_len, eps))
+    test_file = open("../test.txt", "r")
+    text = test_file.read()
 
+    print(text_naturalness(text, sample_len, eps))
 
 
 if __name__ == "__main__":

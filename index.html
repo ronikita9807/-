@@ -1,14 +1,18 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Проверка естественности текста</title>
+    <meta charset="utf-8">
+    <title>Проверка естественности текста</title>
 </head>
-<body>
-    <form enctype = "multipart/form-data"
-                     action = "naturalness.py" method = "post">
-   <p>File: <input type = "file" name = "filename" /></p>
-   <p><input type = "submit" value = "Upload" /></p>
-   </form>
+<body style="font-size:30px">
+<form enctype="multipart/form-data" action="/cgi-bin/naturalness.py" method="post">
+    <p align="center"><b>Выберите файл для анализа в формате .txt:</b><br>
+    <p align="center"><input type="file" name="filename"/></p>
+    <p align="center"><b>Размер выборки:</b><br>
+    <input type="text" name="samples_len" style="height:20px; width:150px; border:1px solid; #ff0000">
+    <p align="center"><b>Погрешность:</b><br>
+    <input type="text" name="eps" size="40" style="height:20px; width:150px; border:1px solid; #ff0000">
+    <p align="center"><input type="submit" value="Upload" style="height: 100px; width: 100px; left: 250; top: 250;"/></p>
+</form>
 </body>
 </html>
