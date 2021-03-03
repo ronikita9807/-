@@ -3,7 +3,7 @@
 
 Запуск проекта:
 python3 -m http.server --cgi
-ANd go to: http://localhost:8000
+And go to: http://localhost:8000
 
 
 План реализации:
