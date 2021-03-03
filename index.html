@@ -3,16 +3,24 @@
 <head>
     <meta charset="utf-8">
     <title>Проверка естественности текста</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link type="text/css" rel="stylesheet" href="/stylesheet.css" />
 </head>
-<body style="font-size:30px">
-<form enctype="multipart/form-data" action="/cgi-bin/naturalness.py" method="post">
-    <p align="center"><b>Выберите файл для анализа в формате .txt:</b><br>
-    <p align="center"><input type="file" name="filename"/></p>
-    <p align="center"><b>Размер выборки:</b><br>
-    <input type="text" name="samples_len" style="height:20px; width:150px; border:1px solid; #ff0000">
-    <p align="center"><b>Погрешность:</b><br>
-    <input type="text" name="eps" size="40" style="height:20px; width:150px; border:1px solid; #ff0000">
-    <p align="center"><input type="submit" value="Upload" style="height: 100px; width: 100px; left: 250; top: 250;"/></p>
-</form>
+<body style="font-size:30px" >
+<div class="split left">
+  <div class="centered">
+    <form enctype="multipart/form-data" action="/cgi-bin/naturalness.py" method="post">
+        <p align="center"><b>Выберите файл для анализа в формате .txt:</b><br>
+        <p align="center"><input type="file" name="filename"/></p>
+        <p align="center"><input type="submit" value="Upload" style="height: 100px; width: 100px; left: 250; top: 250;"/></p>
+    </form>
+  </div>
+</div>
+
+<div class="split right">
+  <div class="centered">
+    <p>Никита, добавь свой код сюда :)
+  </div>
+</div>
 </body>
 </html>
