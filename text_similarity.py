@@ -4,7 +4,7 @@ import pymorphy2
 morph = pymorphy2.MorphAnalyzer()
 
 
-class Similarity():
+class Similarity:
     def __init__(self, text_1, text_2):
         self.text1 = text_1
         self.text2 = text_2
@@ -12,21 +12,44 @@ class Similarity():
         text1_vec = self.split_text(self.text1)
         text2_vec = self.split_text(self.text2)
 
+        # self.words_plus_tag1 = [morph.parse(word)[0].normal_form + "_" + morph.parse(word)[0].tag.POS for word in text1_vec]
+        # self.words_plus_tag2 = [morph.parse(word)[0].normal_form + "_" + morph.parse(word)[0].tag.POS for word in text2_vec]
+
         self.text1_vec = [morph.parse(word)[0].normal_form for word in text1_vec]
         self.text2_vec = [morph.parse(word)[0].normal_form for word in text2_vec]
 
         self.set_words = set(self.text1_vec).union(set(self.text2_vec))
         self.vec1, self.vec2 = self.vectorization()
 
+
     @staticmethod
     def split_text(text):
         spis = text
-        for sep in ['-', ',', ':', ';', '(', ')', '?', '!', '-', '"', '»', '«', '—', '[', ']', '}', '{', '.']:
-            spis = spis.replace(sep, ' ')
+        for sep in [
+            "-",
+            ",",
+            ":",
+            ";",
+            "(",
+            ")",
+            "?",
+            "!",
+            "-",
+            '"',
+            "»",
+            "«",
+            "—",
+            "[",
+            "]",
+            "}",
+            "{",
+            ".",
+        ]:
+            spis = spis.replace(sep, " ")
         spis = spis.split()
         text1_vec = []
         for elem in spis:
-            if elem != '':
+            if elem != "":
                 text1_vec.append(elem)
         return text1_vec
 
@@ -36,7 +59,6 @@ class Similarity():
         for i, elem in enumerate(self.set_words):
             res1[i] = self.text1_vec.count(elem)
             res2[i] = self.text2_vec.count(elem)
-        print(res1, res2)
         return res1, res2
 
     def cos(self, vec1, vec2):
@@ -60,13 +82,31 @@ class Similarity():
 
     def idf(self, text):
         spis = text
-        spis = spis.replace('!', '.')
-        spis = spis.replace('\?', '.')
+        spis = spis.replace("!", ".")
+        spis = spis.replace("\?", ".")
         spis = spis.split(".")
 
         for i in range(len(spis)):
-            for sep in [',', ':', ';', '(', ')', '?', '!', '-', '"', '»', '«', '—', '[', ']', '}', '{', '.']:
-                spis[i] = spis[i].replace(sep, ' ')
+            for sep in [
+                ",",
+                ":",
+                ";",
+                "(",
+                ")",
+                "?",
+                "!",
+                "-",
+                '"',
+                "»",
+                "«",
+                "—",
+                "[",
+                "]",
+                "}",
+                "{",
+                ".",
+            ]:
+                spis[i] = spis[i].replace(sep, " ")
             spis[i] = spis[i].split()
 
         lenth = len(spis)
@@ -99,6 +139,9 @@ class Similarity():
 
         return self.cos(tf_idf1, tf_idf2)
 
+    def text_info(self):
+        return len(self.text1_vec), len(self.text2_vec), len(set(self.text1_vec) & set(self.text2_vec))
+
 
 if __name__ == "__main__":
     text1 = "ИИ - наш друг, и он был дружелюбным."
@@ -107,5 +150,6 @@ if __name__ == "__main__":
     print(a.cos_tf())
     print(a.cos_tf_idf())
     print(a.get_jaccard_sim())
-    # print(a.w2v())
-    # print(a.cos_w2v())
+    print(a.text_info())
+
+
