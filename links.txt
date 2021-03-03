@@ -1,0 +1,12 @@
+https://coderlessons.com/articles/programmirovanie/kak-ispolzovat-python-dlia-nakhozhdeniia-zipf-raspredeleniia-tekstovogo-faila
+
+https://pythonworld.ru/web/cgi-1.html
+
+chmod +x tutor0.py - в папке cgi-bin
+
+python3 -m http.server --cgi
+python -mwebbrowser http://localhost:8000/cgi-bin/naturalness.py
+
+Для доступа с другого компа - нужно будет вбивать его IP и порт указанный у нас (ipconfig или же "Сеть" на маке)
+
+python cgi file upload
