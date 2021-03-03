@@ -143,6 +143,12 @@ class Similarity:
         return len(self.text1_vec), len(self.text2_vec), len(set(self.text1_vec) & set(self.text2_vec))
 
 
+def result(text1, text2):
+    a = Similarity(text1, text2)
+    len1, len2, inter = a.text_info()
+    return a.cos_tf(), a.cos_tf_idf(), a.get_jaccard_sim(), len1, len2, inter
+
+
 if __name__ == "__main__":
     text1 = "ИИ - наш друг, и он был дружелюбным."
     text2 = "ИИ и люди всегда были дружелюбны."
@@ -151,5 +157,6 @@ if __name__ == "__main__":
     print(a.cos_tf_idf())
     print(a.get_jaccard_sim())
     print(a.text_info())
+    print(result(text1, text2))
 
 
