@@ -10,7 +10,7 @@
 <div class="split left">
   <div class="centered">
     <form enctype="multipart/form-data" action="/cgi-bin/naturalness.py" method="post">
-        <p align="center"><b>Выберите файл для анализа в формате .txt:</b><br>
+        <p align="center"><b>Выберите файл для анализа на естественность в формате .txt:</b><br>
         <p align="center"><input type="file" name="filename"/></p>
         <p align="center"><input type="submit" value="Upload" style="height: 100px; width: 100px; left: 250; top: 250;"/></p>
     </form>
@@ -19,7 +19,12 @@
 
 <div class="split right">
   <div class="centered">
-    <p>Никита, добавь свой код сюда :)
+    <form action="/cgi-bin/similarity.py">
+        <p align="center"><b>Введите тексты для анализа на сходство:</b><br><br>
+        <input type="text" name="TEXT_1" style="height: 120px; width: 200px; top: 250;"/>
+        <input type="text" name="TEXT_2" style="height: 120px; width: 200px; top: 250;"/><br><br>
+        <input type="submit" value="Upload" style="height: 100px; width: 100px; "/></p>
+    </form>
   </div>
 </div>
 </body>
