@@ -1,11 +1,12 @@
 import sys
 import math
+#import nltk
 from nltk.tokenize import RegexpTokenizer
 from nltk.probability import FreqDist
 from nltk.corpus import stopwords
 
 
-# nltk.download('all')
+#nltk.download('all')
 
 def print_tokens(tokens):
     for token in tokens:
