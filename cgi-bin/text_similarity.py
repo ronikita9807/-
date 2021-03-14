@@ -69,7 +69,10 @@ class Similarity:
             sum += vec1[i] * vec2[i]
             sum1 += vec1[i] * vec2[i]
             sum2 += vec2[i] * vec2[i]
-        return sum / (sqrt(sum1) * sqrt(sum2))
+        if sum1 and sum2:
+            return sum / (sqrt(sum1) * sqrt(sum2))
+        else:
+            return 0
 
     def get_jaccard_sim(self):
         a = set(self.text1_vec)
